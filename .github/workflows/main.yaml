@@ -58,7 +58,7 @@ jobs:
           TF_VAR_db_name: ${{ secrets.DB_NAME }} # Secret variable
           TF_VAR_db_username: ${{ secrets.DB_USERNAME }} # Secret variable
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }} # Secret variable
-          TF_VAR_key_name: ${{ vars.KEY_NAME }} # Secret variable
+          TF_VAR_key_name: ${{ secrets.KEY_NAME }} # Secret variable
         run: terraform apply -auto-approve # Auto-approve flag skips manual confirmation
   # Job Destroy
   terraform_destroy:
@@ -102,5 +102,5 @@ jobs:
           TF_VAR_db_name: ${{ secrets.DB_NAME }} # Secret variable
           TF_VAR_db_username: ${{ secrets.DB_USERNAME }} # Secret variable
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }} # Secret variable
-          TF_VAR_key_name: ${{ vars.KEY_NAME }} # Secret variable
+          TF_VAR_key_name: ${{ secrets.KEY_NAME }} # Secret variable
         run: terraform destroy -auto-approve    
