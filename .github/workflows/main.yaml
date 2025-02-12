@@ -50,10 +50,16 @@ jobs:
 
       # Step 5: Preview the infrastructure changes
       - name: Terraform Plan
+        env: 
+          TF_VAR_db_name: ${{ secrets.DB_NAME }} # Secret variable
+          TF_VAR_db_username: ${{ secrets.DB_USERNAME }} # Secret variable
+          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }} # Secret variable
+          TF_VAR_key_name: ${{ secrets.KEY_NAME }} # Secret variable
         run: terraform plan
 
       # Step 6: Apply the infrastructure changes
       - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' # Apply only on the main branch
         env: 
           TF_VAR_db_name: ${{ secrets.DB_NAME }} # Secret variable
           TF_VAR_db_username: ${{ secrets.DB_USERNAME }} # Secret variable
@@ -94,10 +100,16 @@ jobs:
   
       # Step 5: Preview the infrastructure changes
       - name: Terraform Plan
+        env: 
+          TF_VAR_db_name: ${{ secrets.DB_NAME }} # Secret variable
+          TF_VAR_db_username: ${{ secrets.DB_USERNAME }} # Secret variable
+          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }} # Secret variable
+          TF_VAR_key_name: ${{ secrets.KEY_NAME }} # Secret variable
         run: terraform plan -destroy
   
       # Step 6: Destroy the infrastructure
       - name: Terraform Destroy
+        if: github.ref == 'refs/heads/main' # Destroy only on the main branch
         env: 
           TF_VAR_db_name: ${{ secrets.DB_NAME }} # Secret variable
           TF_VAR_db_username: ${{ secrets.DB_USERNAME }} # Secret variable
