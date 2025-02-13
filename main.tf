@@ -7,8 +7,8 @@ provider "aws" {
 # Configure the S3 backend for storing the Terraform state
 terraform {
   backend "s3" {
-    bucket         = "my-activity-swen-614"
-    key            = "tfstate-rds-folder/terraform.tfstate"
+    bucket         = "github-tf-rds-wp-activity"
+    key            = "tfstate-tf-rds-wp-act"
     region         = "us-east-1"
     encrypt = false
   }
